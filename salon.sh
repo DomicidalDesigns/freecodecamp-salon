@@ -52,7 +52,7 @@ function user_input {
   read -p "What time would you like your $SELECTED_SERVICE, $CUSTOMER_NAME? " SERVICE_TIME
 
   # insert appointment
-  $($PSQL "insert into appointments(time, customer_id, service_id) select '$SERVICE_TIME', (select customer_id from customers where name='$CUSTOMER_NAME'), $SERVICE_ID_SELECTED")
+  echo $($PSQL "insert into appointments(time, customer_id, service_id) select '$SERVICE_TIME', (select customer_id from customers where phone='$CUSTOMER_PHONE'), $SERVICE_ID_SELECTED")
 
   echo "I have put you down for a $SELECTED_SERVICE at $SERVICE_TIME, $CUSTOMER_NAME." 
 }
